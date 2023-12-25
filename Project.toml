@@ -2,3 +2,7 @@ name = "KCMSSE"
 uuid = "00277f98-1dc6-4e40-8fe5-8680cc8fa936"
 authors = ["NyaNyaNya~ <pde2718zt@gmail.com>"]
 version = "0.1.0"
+
+[deps]
+FFTW = "7a1cc6ca-52ef-59f5-83cd-3a7055c09341"
+Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
