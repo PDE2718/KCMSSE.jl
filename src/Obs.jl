@@ -9,8 +9,8 @@ Base.@kwdef struct Obs
     ρ::Accum{Float64} = Accum(0.0)
     nwl1::Accum{Int} = Accum(0)
     nwl2::Accum{Int} = Accum(0)
-    Sz1::Accum{Int} = Accum(0.0)
-    Sz2::Accum{Int} = Accum(0.0)
+    Sz1::Accum{Int} = Accum(0)
+    Sz2::Accum{Int} = Accum(0)
     Sk::Accum{Matrix{Float64}} = Accum(zeros(Float64, L), 0)
     ψ̄::Accum{Matrix{Float64}} = Accum(zeros(Float64, L), 0)
     ρtrace::Vector{Float64} = Float64[]
