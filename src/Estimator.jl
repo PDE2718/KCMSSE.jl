@@ -60,8 +60,8 @@ function increment!(X::Estimator, ψ0::Matrix{Bool}, r::Real=1.5)::Bool
         resize!(H.buf, Λp)
         ini_string!(H)
         X.ψ0 .= ψ0
-        X.ψt .= ψt
-        X.ψm .= ψm
+        X.ψt .= ψ0
+        X.ψm .= ψ0
         X.n = 0
         return true
     else
