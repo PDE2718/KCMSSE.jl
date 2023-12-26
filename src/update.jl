@@ -177,9 +177,9 @@ function sweep!(X::Estimator)
 end
 
 function bisweep!(X::Estimator)
+    ξ::f64, μ::f64, H::HString, PBC::Bool = X.ξ, X.μ, X.H, X.PBC
     Λ::Int = string_length(H)
     p_orders = string_orders(H)
-    ξ::f64, μ::f64, H::HString, PBC::Bool = X.ξ, X.μ, X.H, X.PBC
     
     diagonal_update!(X)
     for i ∈ p_orders
