@@ -47,7 +47,7 @@ function inspect_kinks(X::Estimator)
     end
 end
 
-function increment!(X::Estimator, ψ0::Matrix{Bool}, r::Real=1.5)::Bool
+function increase_estimator!(X::Estimator, ψ0::Matrix{Bool}, r::Real=1.5)::Bool
     @assert r > 1
     H::HString = X.H
     n::Int = X.n
