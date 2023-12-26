@@ -56,7 +56,7 @@ function increment!(X::Estimator, ψ0::Matrix{Bool}, r::Real=1.5)::Bool
     Λp::Int = ceil(Int, n * abs2(r))
     Λ1 += isodd(Λ1)
     Λp += isodd(Λp)
-    if Λ1 > Λ
+    if Λ1 > Λ0
         resize!(H.buf, Λp)
         ini_string!(H)
         X.ψ0 .= ψ0
