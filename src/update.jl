@@ -175,3 +175,23 @@ function sweep!(X::Estimator)
     offdiag_update!(X)
     return nothing
 end
+
+function bisweep!(X::Estimator)
+    Λ::Int = string_length(H)
+    p_orders = string_orders(H)
+    ξ::f64, μ::f64, H::HString, PBC::Bool = X.ξ, X.μ, X.H, X.PBC
+    
+    diagonal_update!(X)
+    for i ∈ p_orders
+        update_ahead!(center_leg(H, i), ξ, μ, PBC)
+    end
+    update_ψ0t!(X)
+
+    diagonal_update!(X)
+    for i ∈ reverse(p_orders)
+        update_aback!(center_leg(H, i), ξ, μ, PBC)
+    end
+    update_ψ0t!(X)
+
+    return nothing
+end
