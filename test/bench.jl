@@ -32,26 +32,9 @@ end
 
 res = onesimu((5, 5), 32.0, 0.0)
 
-mean(x->mean(x.ρ), res)
+mean(x -> mean(x.E), res) # ≈ -0.394742
+mean(x -> mean(x.ρ), res) # ≈  0.374215
 
-
-L = (5, 5)
-ψ0 = zeros(Bool, L)
-ψ0[1, 1] = true
-β = 32.0
-Λ0 = Int(ceil(β * prod(L)))
-X = Estimator(ψ0, Λ0; PBC=false)
-X.β = β
-X.ξ = 0.0
-X.μ = 0.0
-
-for i ∈ 1:100
-    bisweep!(X)
-    println("n=$(X.n), Λ=$(length(X.H)), n/Λ=$(X.n/length(X.H))")
-    if increment!(X, ψ0)
-        println("increment! ")
-    end
-end
 
 
 
