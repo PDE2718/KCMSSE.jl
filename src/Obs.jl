@@ -26,7 +26,7 @@ function onestep_measure!(X::Estimator, O::Obs;
 )
     ψm, ψk, Sk, β, ξ, μ = X.ψm, X.ψk, X.Sk, X.β, X.ξ, X.μ
 
-    N = length(ψ0)
+    N = length(ψm)
     # record the world line number and energy
     nwl1::Int64 = X.n
     push!(O.nwl1, nwl1)
@@ -46,8 +46,8 @@ function onestep_measure!(X::Estimator, O::Obs;
     push!(O.ρ, ρ)
 
     # real space mean and the structure factor
-    ψk .= ψ0
-    push!(O.ψ̄, ψ0)
+    ψk .= ψm
+    push!(O.ψ̄, ψm)
     fft!(ψk)
     map!(abs2, Sk, ψk)
     push!(O.Sk, Sk)
@@ -57,7 +57,7 @@ function onestep_measure!(X::Estimator, O::Obs;
         push!(O.ρtrace, ρ)
     end
     if take_snapshot
-        push!(O.ψsnapshots, X.ψ0 .== true)
+        push!(O.ψsnapshots, X.ψm .== true)
     end
 
     return nothing
