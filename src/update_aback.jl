@@ -1,7 +1,7 @@
 function update_aback!(l0::Leg, ξ::f64, μ::f64, PBC::Bool)::Bool
-    # if l0 |> get_flag == I0_ || ~iscenter(l0)
-    #     return false
-    # end
+    if l0 |> get_flag == I0_ || ~iscenter(l0)
+        return false
+    end
     tail::Leg = head::Leg = l0
     wr::f64 = 1.0
     across::Bool = cyclic::Bool = false
