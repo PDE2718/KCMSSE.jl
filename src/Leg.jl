@@ -21,6 +21,13 @@ function HString(N::Integer)
     end
     return H
 end
+function ini_string!(H::HString)
+    fill!(H.buf, i32(0))
+    for p ∈ string_orders(H)
+        H[p, 16] = p << 4
+    end
+    return nothing
+end
 
 struct Leg
     H::HString

@@ -46,3 +46,25 @@ function inspect_kinks(X::Estimator)
         end
     end
 end
+
+function increment!(X::Estimator, ψ0::Matrix{Bool}, r::Real=1.5)::Bool
+    @assert r > 1
+    H::HString = X.H
+    n::Int = X.n
+    Λ0::Int = string_length(H)
+    Λ1::Int = ceil(Int, n * r)
+    Λp::Int = ceil(Int, n * abs2(r))
+    Λ1 += isodd(Λ1)
+    Λp += isodd(Λp)
+    if Λ1 > Λ
+        resize!(H.buf, Λp)
+        ini_string!(H)
+        X.ψ0 .= ψ0
+        X.ψt .= ψt
+        X.ψm .= ψm
+        X.n = 0
+        return true
+    else
+        return false
+    end
+end
