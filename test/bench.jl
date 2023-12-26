@@ -1,5 +1,5 @@
 using Revise
-using KCMSSE
+using KCMSSE, Statistics
 
 function onesimu(L::Tuple{Int,Int}, β::Float64, μ::Float64;
     t_bin::Int=1000, n_bin::Int=32,

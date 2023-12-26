@@ -62,3 +62,28 @@ function onestep_measure!(X::Estimator, O::Obs;
 
     return nothing
 end
+
+obs_ninj(Sk::Matrix{Float64})::Matrix{Float64} = real.(bfft(Sk)) ./ (length(Sk)^2)
+
+function obs_cicj(Sk::Matrix{Float64})::Matrix{Float64}
+    S̃ = deepcopy(Sk)
+    S̃[1] = 0
+    return real.(bfft(S̃)) ./ (length(S̃)^2)
+end
+# Auxiliary functions for visualization
+function pbcfill(A)
+    B = fftshift(A)
+    if iseven(size(B, 1))
+        B = vcat(B, B[1:1, 1:end])
+    end
+    if iseven(size(B, 2))
+        B = hcat(B, B[1:end, 1:1])
+    end
+    return B
+end
+function pbcgrid(A)
+    @assert size(A) |> allequal
+    n = size(A, 1)
+    @assert isodd(n)
+    return -(n ÷ 2):(n÷2)
+end
