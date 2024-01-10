@@ -14,7 +14,7 @@ function onesimu(L::Tuple{Int,Int}, β::Float64, μ::Float64;
     X.β = β
     X.μ = μ
     X.ξ = 0.0
-    M = [Obs(X) for t ∈ 1:n_bin]
+    M = [Obs(X,t) for t ∈ 1:n_bin]
 
     for t ∈ 1:t_th
         bisweep!(X)
