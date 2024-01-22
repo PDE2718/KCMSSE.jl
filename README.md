@@ -21,3 +21,5 @@ One `Operator` is a column slice of length 16 of the HString. The 16 `i32` are f
 10 + (1:5) | next legs, 28 bits for p and 4 bits for r
 16         |      flag, 28 bits for p and 4 bits for type
 ```
+
+### Update scheme
